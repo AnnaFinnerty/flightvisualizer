@@ -1,11 +1,9 @@
-import * as THREE from '/node_modules/three/build/three.module.js';
-
 let lacur = 0;
 let locur = -45;
 let lamin = -90;
 let lamax = 90;
 let lomin = -180;
-let lomax = 180;
+let lomax = -100;
 let rotationx = 0;
 let rotationy = 0;
 let rotationz = 0;
