@@ -73,13 +73,14 @@ const requestFlights = async(url = '', data = {}) => {
 
 const load = () => {
     const url = 'https://opensky-network.org/api/states/all'
-    requestFlights(url)
-    .then(data => {
-      //console.log(data); // JSON data parsed by `data.json()` call
-      for(let i in data.states){
-          buildPlane(data.states[i])
-      }
-    });
+    // requestFlights(url)
+    // .then(data => {
+    //   //console.log(data); // JSON data parsed by `data.json()` call
+    //   for(let i in data.states){
+    //       buildPlane(data.states[i])
+    //   }
+    // });
+    update()
 }
 
 const update = () => {
@@ -90,8 +91,9 @@ const update = () => {
     .then(data => {
       clearFlights();
     //   buildPlane(data.states[0])
-     console.log(data.states[0])
+    //  console.log(data.states[0])
       //console.log(data); // JSON data parsed by `data.json()` call
+      document.querySelector('#num_inflight').textContent = "Planes in flight: " + data.states.length
       for(let i in data.states){
           buildPlane(data.states[i])
       }
@@ -127,7 +129,6 @@ const buildPlane = (plane) => {
      const x = radius * Math.cos(l) * Math.cos(lon) + alt * Math.cos(lat) * Math.cos(lon)
      const y = radius * Math.cos(l) * Math.sin(lon) + alt * Math.cos(lat) * Math.sin(lon)
      const z = radius * Math.sin(l) + alt * Math.sin(lat)
-    //  console.log(x,y,z)
      return {x:x, y: y, z: z}
  }
 
