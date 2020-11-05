@@ -3,10 +3,9 @@ const express = require('express');
 const app = express()
 const http = require('http');
 
-app.set('port', 3000);
+const port = 3000;
 
-const server = http.createServer(app);
-server.listen(3000);
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 app.use('/', express.static('public'))
 
